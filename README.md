@@ -52,3 +52,7 @@ python -m unittest discover -s tests -v
 - **事件语义庭 → 抑制与送达庭**：inc-1 在维护窗口结束后仍未确认，投递庭向当前值班 team-c 补发并保留 team-b 原责任记录。失败分支：旧班迟到确认不能抹去 team-c 已形成的补发决定
 
 该仓仅实现本地业务状态与回执协议；不连接真实 Kubernetes、设备插件、时间服务或告警平台。
+
+## Offline mitigation and reopening
+
+Each synthetic impact cell is checked under an acknowledged incident delivery. A clearance may be consumed once for a traffic reopening ticket, subject to intervening regressive observations. Use `python -B -m eventcourt remedy --db remedy.sqlite --fixture fixtures/remedy-reopen.json` and `python -B -m eventcourt replay --db remedy.sqlite`.

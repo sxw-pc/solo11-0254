@@ -1,0 +1,255 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d1",
+      "op": "subscription-activate",
+      "id": "sub-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "team": "team-a",
+      "generation": 1
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d2",
+      "op": "oncall",
+      "id": "shift-a",
+      "service": "svc-a",
+      "team": "team-a",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d3",
+      "op": "oncall",
+      "id": "shift-b",
+      "service": "svc-a",
+      "team": "team-b",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d4",
+      "op": "duty-handoff",
+      "id": "handoff",
+      "subscription": "sub-1",
+      "from_team": "team-a",
+      "to_team": "team-b",
+      "generation": 2,
+      "at": 12,
+      "from_ack": "ack-a",
+      "to_ack": "ack-b"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x1",
+      "op": "suppression-grant",
+      "id": "maint-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "start": 10,
+      "expires": 20,
+      "approver": "owner"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x2",
+      "op": "notification-route",
+      "id": "send-1",
+      "incident": "inc-1",
+      "at": 15
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x3",
+      "op": "suppression-expire",
+      "id": "maint-1",
+      "at": 21
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x4",
+      "op": "delivery-ack",
+      "id": "ack-1",
+      "delivery": "send-1",
+      "team": "team-b",
+      "at": 22
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "impact-cell",
+      "id": "north",
+      "event_id": "remedy-11",
+      "incident": "inc-1",
+      "cohort": "canary",
+      "weight": 2
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "impact-cell",
+      "id": "south",
+      "event_id": "remedy-12",
+      "incident": "inc-1",
+      "cohort": "main",
+      "weight": 3
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-check",
+      "id": "invalid",
+      "event_id": "remedy-13",
+      "cell": "north",
+      "delivery": "send-1",
+      "receipt": "ack-1",
+      "at": 21,
+      "result": "healthy"
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-check",
+      "id": "pass-n",
+      "event_id": "remedy-14",
+      "cell": "north",
+      "delivery": "send-1",
+      "receipt": "ack-1",
+      "at": 23,
+      "result": "healthy"
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-clear",
+      "id": "early",
+      "event_id": "remedy-15",
+      "incident": "inc-1",
+      "at": 24
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-check",
+      "id": "pass-s",
+      "event_id": "remedy-16",
+      "cell": "south",
+      "delivery": "send-1",
+      "receipt": "ack-1",
+      "at": 25,
+      "result": "healthy"
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-clear",
+      "id": "all",
+      "event_id": "remedy-17",
+      "incident": "inc-1",
+      "at": 25
+    }
+  },
+  {
+    "command": "resume",
+    "input": {
+      "op": "reopen-ticket",
+      "id": "permit",
+      "event_id": "remedy-18",
+      "clearance": "all",
+      "service": "svc-a",
+      "at": 26
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-clear",
+      "id": "all-second",
+      "event_id": "remedy-19",
+      "incident": "inc-1",
+      "at": 26
+    }
+  },
+  {
+    "command": "remedy",
+    "input": {
+      "op": "remedy-check",
+      "id": "relapse-s",
+      "event_id": "remedy-20",
+      "cell": "south",
+      "delivery": "send-1",
+      "receipt": "ack-1",
+      "at": 27,
+      "result": "impaired"
+    }
+  },
+  {
+    "command": "resume",
+    "input": {
+      "op": "reopen-ticket",
+      "id": "held",
+      "event_id": "remedy-21",
+      "clearance": "all-second",
+      "service": "svc-a",
+      "at": 28
+    }
+  }
+]
