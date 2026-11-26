@@ -18,3 +18,6 @@ MODULES.update(airgap=airgap,witness=witness)
 
 from . import slo, advisory
 MODULES.update(slo=slo, advisory=advisory)
+
+from . import signal_panel, panel_reader
+MODULES.update(signal_panel=signal_panel, panel_reader=panel_reader)
