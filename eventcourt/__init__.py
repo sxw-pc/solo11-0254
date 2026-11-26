@@ -27,3 +27,6 @@ MODULES.update(dye_vat=dye_vat, dye_gauge=dye_gauge)
 
 from . import checkpress, checkreader
 MODULES.update(checkpress=checkpress, checkreader=checkreader)
+
+from . import exercise, exercise_meter
+MODULES.update(exercise=exercise, exercise_meter=exercise_meter)

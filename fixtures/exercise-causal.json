@@ -1,0 +1,464 @@
+[
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-both-open",
+      "op": "open",
+      "rig": "A-both",
+      "repairer": "A"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-both-B",
+      "op": "reset",
+      "rig": "A-both",
+      "at": 1,
+      "handle": "B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-both-A",
+      "op": "reset",
+      "rig": "A-both",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-both-read-2",
+      "op": "dashboard",
+      "rig": "A-both",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-both-step-3",
+      "op": "wait",
+      "rig": "A-both",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-both-read-3",
+      "op": "dashboard",
+      "rig": "A-both",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-both-step-4",
+      "op": "wait",
+      "rig": "A-both",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-both-read-4",
+      "op": "dashboard",
+      "rig": "A-both",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-intervention-open",
+      "op": "open",
+      "rig": "A-intervention",
+      "repairer": "A"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-intervention-wait",
+      "op": "wait",
+      "rig": "A-intervention",
+      "at": 1
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-intervention-A",
+      "op": "reset",
+      "rig": "A-intervention",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-intervention-read-2",
+      "op": "dashboard",
+      "rig": "A-intervention",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-intervention-step-3",
+      "op": "wait",
+      "rig": "A-intervention",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-intervention-read-3",
+      "op": "dashboard",
+      "rig": "A-intervention",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-intervention-step-4",
+      "op": "wait",
+      "rig": "A-intervention",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-intervention-read-4",
+      "op": "dashboard",
+      "rig": "A-intervention",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-contact-open",
+      "op": "open",
+      "rig": "A-contact",
+      "repairer": "A"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-contact-B",
+      "op": "reset",
+      "rig": "A-contact",
+      "at": 1,
+      "handle": "B"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-contact-contact",
+      "op": "contact",
+      "rig": "A-contact",
+      "at": 1,
+      "reset": "A-contact-B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-contact-A",
+      "op": "reset",
+      "rig": "A-contact",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-contact-read-2",
+      "op": "dashboard",
+      "rig": "A-contact",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-contact-step-3",
+      "op": "wait",
+      "rig": "A-contact",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-contact-read-3",
+      "op": "dashboard",
+      "rig": "A-contact",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "A-contact-step-4",
+      "op": "wait",
+      "rig": "A-contact",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "A-contact-read-4",
+      "op": "dashboard",
+      "rig": "A-contact",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-both-open",
+      "op": "open",
+      "rig": "B-both",
+      "repairer": "B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-both-B",
+      "op": "reset",
+      "rig": "B-both",
+      "at": 1,
+      "handle": "B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-both-A",
+      "op": "reset",
+      "rig": "B-both",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-both-read-2",
+      "op": "dashboard",
+      "rig": "B-both",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-both-step-3",
+      "op": "wait",
+      "rig": "B-both",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-both-read-3",
+      "op": "dashboard",
+      "rig": "B-both",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-both-step-4",
+      "op": "wait",
+      "rig": "B-both",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-both-read-4",
+      "op": "dashboard",
+      "rig": "B-both",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-intervention-open",
+      "op": "open",
+      "rig": "B-intervention",
+      "repairer": "B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-intervention-wait",
+      "op": "wait",
+      "rig": "B-intervention",
+      "at": 1
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-intervention-A",
+      "op": "reset",
+      "rig": "B-intervention",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-intervention-read-2",
+      "op": "dashboard",
+      "rig": "B-intervention",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-intervention-step-3",
+      "op": "wait",
+      "rig": "B-intervention",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-intervention-read-3",
+      "op": "dashboard",
+      "rig": "B-intervention",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-intervention-step-4",
+      "op": "wait",
+      "rig": "B-intervention",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-intervention-read-4",
+      "op": "dashboard",
+      "rig": "B-intervention",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-contact-open",
+      "op": "open",
+      "rig": "B-contact",
+      "repairer": "B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-contact-B",
+      "op": "reset",
+      "rig": "B-contact",
+      "at": 1,
+      "handle": "B"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-contact-contact",
+      "op": "contact",
+      "rig": "B-contact",
+      "at": 1,
+      "reset": "B-contact-B"
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-contact-A",
+      "op": "reset",
+      "rig": "B-contact",
+      "at": 2,
+      "handle": "A"
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-contact-read-2",
+      "op": "dashboard",
+      "rig": "B-contact",
+      "at": 2
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-contact-step-3",
+      "op": "wait",
+      "rig": "B-contact",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-contact-read-3",
+      "op": "dashboard",
+      "rig": "B-contact",
+      "at": 3
+    }
+  },
+  {
+    "command": "exercise",
+    "input": {
+      "event_id": "B-contact-step-4",
+      "op": "wait",
+      "rig": "B-contact",
+      "at": 4
+    }
+  },
+  {
+    "command": "exercise_meter",
+    "input": {
+      "event_id": "B-contact-read-4",
+      "op": "dashboard",
+      "rig": "B-contact",
+      "at": 4
+    }
+  }
+]
