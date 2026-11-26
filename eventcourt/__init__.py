@@ -21,3 +21,6 @@ MODULES.update(slo=slo, advisory=advisory)
 
 from . import signal_panel, panel_reader
 MODULES.update(signal_panel=signal_panel, panel_reader=panel_reader)
+
+from . import dye_vat, dye_gauge
+MODULES.update(dye_vat=dye_vat, dye_gauge=dye_gauge)

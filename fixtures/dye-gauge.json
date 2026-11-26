@@ -1,0 +1,127 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "vat-open",
+      "event_id": "dye-vat",
+      "id": "vat",
+      "incident": "inc-1",
+      "capacity": 10
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "cartridge-stock",
+      "event_id": "dye-D",
+      "id": "D",
+      "incident": "inc-1",
+      "volume": 4,
+      "dark": 4
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "cartridge-stock",
+      "event_id": "dye-P",
+      "id": "P",
+      "incident": "inc-1",
+      "volume": 4,
+      "dark": 0
+    }
+  },
+  {
+    "command": "dye_gauge",
+    "input": {
+      "op": "gauge-read",
+      "event_id": "dye-empty",
+      "id": "empty",
+      "vat": "vat",
+      "dark_per_four": 2
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "vat-pour",
+      "event_id": "dye-first",
+      "id": "first",
+      "vat": "vat",
+      "cartridge": "D"
+    }
+  },
+  {
+    "command": "dye_gauge",
+    "input": {
+      "op": "gauge-read",
+      "event_id": "dye-before",
+      "id": "before",
+      "vat": "vat",
+      "dark_per_four": 2
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "vat-pour",
+      "event_id": "dye-second",
+      "id": "second",
+      "vat": "vat",
+      "cartridge": "P"
+    }
+  },
+  {
+    "command": "dye_gauge",
+    "input": {
+      "op": "gauge-read",
+      "event_id": "dye-after",
+      "id": "after",
+      "vat": "vat",
+      "dark_per_four": 2
+    }
+  },
+  {
+    "command": "dye_vat",
+    "input": {
+      "op": "vat-pour",
+      "event_id": "dye-attempt-duplicate",
+      "id": "attempt-duplicate",
+      "vat": "vat",
+      "cartridge": "P"
+    }
+  }
+]
