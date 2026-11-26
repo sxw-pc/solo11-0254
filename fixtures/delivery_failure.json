@@ -1,0 +1,119 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d1",
+      "op": "subscription-activate",
+      "id": "sub-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "team": "team-a",
+      "generation": 1
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d2",
+      "op": "oncall",
+      "id": "shift-a",
+      "service": "svc-a",
+      "team": "team-a",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d3",
+      "op": "oncall",
+      "id": "shift-b",
+      "service": "svc-a",
+      "team": "team-b",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d4",
+      "op": "duty-handoff",
+      "id": "handoff",
+      "subscription": "sub-1",
+      "from_team": "team-a",
+      "to_team": "team-b",
+      "generation": 2,
+      "at": 12,
+      "from_ack": "ack-a",
+      "to_ack": "ack-b"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x1",
+      "op": "suppression-grant",
+      "id": "maint-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "start": 10,
+      "expires": 20,
+      "approver": "owner"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x2",
+      "op": "notification-route",
+      "id": "send-1",
+      "incident": "inc-1",
+      "at": 15
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "fx",
+      "op": "notification-route",
+      "id": "bad",
+      "incident": "none",
+      "at": 1
+    }
+  }
+]
