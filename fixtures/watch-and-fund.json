@@ -1,0 +1,119 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "watch",
+    "input": {
+      "event_id": "watch-2",
+      "op": "watch-rule",
+      "id": "deploy-first",
+      "position": 1,
+      "service": "svc-a",
+      "kind": "deploy",
+      "action": "page"
+    }
+  },
+  {
+    "command": "watch",
+    "input": {
+      "event_id": "watch-3",
+      "op": "watch-rule",
+      "id": "default",
+      "position": 2,
+      "service": "*",
+      "kind": "*",
+      "action": "hold"
+    }
+  },
+  {
+    "command": "watch",
+    "input": {
+      "event_id": "watch-4",
+      "op": "watch-evaluate",
+      "id": "early",
+      "incident": "inc-1"
+    }
+  },
+  {
+    "command": "notice_cost",
+    "input": {
+      "event_id": "watch-5",
+      "op": "fund-open",
+      "id": "F",
+      "cents": 9
+    }
+  },
+  {
+    "command": "notice_cost",
+    "input": {
+      "event_id": "watch-6",
+      "op": "purchase-record",
+      "id": "unknown",
+      "incident": "inc-1",
+      "fund": "F",
+      "cents": 5
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "watch-7",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "watch",
+    "input": {
+      "event_id": "watch-8",
+      "op": "watch-evaluate",
+      "id": "ready",
+      "incident": "inc-1"
+    }
+  },
+  {
+    "command": "notice_cost",
+    "input": {
+      "event_id": "watch-9",
+      "op": "purchase-record",
+      "id": "ready",
+      "incident": "inc-1",
+      "fund": "F",
+      "cents": 5
+    }
+  },
+  {
+    "command": "notice_cost",
+    "input": {
+      "event_id": "watch-10",
+      "op": "purchase-record",
+      "id": "over",
+      "incident": "inc-1",
+      "fund": "F",
+      "cents": 5
+    }
+  }
+]

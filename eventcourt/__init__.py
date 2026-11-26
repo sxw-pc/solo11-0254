@@ -9,3 +9,6 @@ MODULES.update(channel=channel, cost=cost, bulletin=bulletin)
 
 from . import muster, timeline
 MODULES.update(muster=muster, timeline=timeline)
+
+from . import watch, notice_cost
+MODULES.update(watch=watch, notice_cost=notice_cost)
