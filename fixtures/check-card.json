@@ -1,0 +1,185 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "alpha",
+      "event_id": "checkcard-alpha",
+      "op": "card-open",
+      "incident": "inc-1",
+      "size": 7
+    }
+  },
+  {
+    "command": "checkreader",
+    "input": {
+      "id": "first-before",
+      "event_id": "checkcard-first-before",
+      "op": "card-fit",
+      "card": "alpha",
+      "pins": [
+        3
+      ],
+      "sealed": [
+        0
+      ]
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "wide",
+      "event_id": "checkcard-wide",
+      "op": "card-punch",
+      "card": "alpha",
+      "anchor": 1,
+      "offsets": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "command": "checkreader",
+    "input": {
+      "id": "first-after",
+      "event_id": "checkcard-first-after",
+      "op": "card-fit",
+      "card": "alpha",
+      "pins": [
+        3
+      ],
+      "sealed": [
+        0
+      ]
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "blocked",
+      "event_id": "checkcard-blocked",
+      "op": "card-punch",
+      "card": "alpha",
+      "anchor": 4,
+      "offsets": [
+        2
+      ]
+    }
+  },
+  {
+    "command": "checkreader",
+    "input": {
+      "id": "blocked-final",
+      "event_id": "checkcard-blocked-final",
+      "op": "card-fit",
+      "card": "alpha",
+      "pins": [
+        3,
+        6
+      ],
+      "sealed": [
+        0
+      ]
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "beta",
+      "event_id": "checkcard-beta",
+      "op": "card-open",
+      "incident": "inc-1",
+      "size": 7
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "narrow",
+      "event_id": "checkcard-narrow",
+      "op": "card-punch",
+      "card": "beta",
+      "anchor": 1,
+      "offsets": [
+        2
+      ]
+    }
+  },
+  {
+    "command": "checkreader",
+    "input": {
+      "id": "beta-first",
+      "event_id": "checkcard-beta-first",
+      "op": "card-fit",
+      "card": "beta",
+      "pins": [
+        3
+      ],
+      "sealed": [
+        0
+      ]
+    }
+  },
+  {
+    "command": "checkpress",
+    "input": {
+      "id": "narrow-final",
+      "event_id": "checkcard-narrow-final",
+      "op": "card-punch",
+      "card": "beta",
+      "anchor": 4,
+      "offsets": [
+        2
+      ]
+    }
+  },
+  {
+    "command": "checkreader",
+    "input": {
+      "id": "beta-final",
+      "event_id": "checkcard-beta-final",
+      "op": "card-fit",
+      "card": "beta",
+      "pins": [
+        3,
+        6
+      ],
+      "sealed": [
+        0
+      ]
+    }
+  }
+]
