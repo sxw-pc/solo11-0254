@@ -12,3 +12,6 @@ MODULES.update(muster=muster, timeline=timeline)
 
 from . import watch, notice_cost
 MODULES.update(watch=watch, notice_cost=notice_cost)
+
+from . import airgap, witness
+MODULES.update(airgap=airgap,witness=witness)
