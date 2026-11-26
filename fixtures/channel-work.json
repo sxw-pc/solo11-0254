@@ -1,0 +1,223 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d1",
+      "op": "subscription-activate",
+      "id": "sub-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "team": "team-a",
+      "generation": 1
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d2",
+      "op": "oncall",
+      "id": "shift-a",
+      "service": "svc-a",
+      "team": "team-a",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d3",
+      "op": "oncall",
+      "id": "shift-b",
+      "service": "svc-a",
+      "team": "team-b",
+      "start": 0,
+      "expires": 30
+    }
+  },
+  {
+    "command": "duty",
+    "input": {
+      "event_id": "d4",
+      "op": "duty-handoff",
+      "id": "handoff",
+      "subscription": "sub-1",
+      "from_team": "team-a",
+      "to_team": "team-b",
+      "generation": 2,
+      "at": 12,
+      "from_ack": "ack-a",
+      "to_ack": "ack-b"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x1",
+      "op": "suppression-grant",
+      "id": "maint-1",
+      "service": "svc-a",
+      "kind": "deploy",
+      "start": 10,
+      "expires": 20,
+      "approver": "owner"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x2",
+      "op": "notification-route",
+      "id": "send-1",
+      "incident": "inc-1",
+      "at": 15
+    }
+  },
+  {
+    "command": "channel",
+    "input": {
+      "event_id": "channel-early",
+      "op": "packet-emit",
+      "id": "early",
+      "delivery": "send-1",
+      "team": "team-b",
+      "body": "open"
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x3",
+      "op": "suppression-expire",
+      "id": "maint-1",
+      "at": 21
+    }
+  },
+  {
+    "command": "delivery",
+    "input": {
+      "event_id": "x4",
+      "op": "delivery-ack",
+      "id": "ack-1",
+      "delivery": "send-1",
+      "team": "team-b",
+      "at": 22
+    }
+  },
+  {
+    "command": "channel",
+    "input": {
+      "event_id": "channel-12",
+      "op": "packet-emit",
+      "id": "p1",
+      "delivery": "send-1",
+      "team": "team-b",
+      "body": "open"
+    }
+  },
+  {
+    "command": "bulletin",
+    "input": {
+      "event_id": "channel-13",
+      "op": "bulletin-freeze",
+      "id": "early",
+      "team": "team-b",
+      "packet": "p1"
+    }
+  },
+  {
+    "command": "channel",
+    "input": {
+      "event_id": "channel-14",
+      "op": "packet-receive",
+      "id": "r1",
+      "team": "team-b",
+      "packet": "p1"
+    }
+  },
+  {
+    "command": "bulletin",
+    "input": {
+      "event_id": "channel-15",
+      "op": "bulletin-freeze",
+      "id": "ready",
+      "team": "team-b",
+      "packet": "p1"
+    }
+  },
+  {
+    "command": "cost",
+    "input": {
+      "event_id": "channel-16",
+      "op": "work-record",
+      "id": "w0",
+      "team": "team-b",
+      "receipt": "ack-1",
+      "ended": 21,
+      "units": 4
+    }
+  },
+  {
+    "command": "cost",
+    "input": {
+      "event_id": "channel-17",
+      "op": "work-tally",
+      "id": "t0",
+      "team": "team-b"
+    }
+  },
+  {
+    "command": "cost",
+    "input": {
+      "event_id": "channel-18",
+      "op": "work-record",
+      "id": "w1",
+      "team": "team-b",
+      "receipt": "ack-1",
+      "ended": 23,
+      "units": 4
+    }
+  },
+  {
+    "command": "cost",
+    "input": {
+      "event_id": "channel-19",
+      "op": "work-tally",
+      "id": "t1",
+      "team": "team-b"
+    }
+  }
+]

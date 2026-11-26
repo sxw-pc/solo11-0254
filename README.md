@@ -56,3 +56,5 @@ python -m unittest discover -s tests -v
 ## Offline mitigation and reopening
 
 Each synthetic impact cell is checked under an acknowledged incident delivery. A clearance may be consumed once for a traffic reopening ticket, subject to intervening regressive observations. Use `python -B -m eventcourt remedy --db remedy.sqlite --fixture fixtures/remedy-reopen.json` and `python -B -m eventcourt replay --db remedy.sqlite`.
+
+`python -B -m eventcourt channel --fixture fixtures/channel-work.json --db channel.sqlite` exercises the offline packet channel, receipt-based bulletin and operator work tally.
