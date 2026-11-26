@@ -1,0 +1,78 @@
+[
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i1",
+      "op": "source-register",
+      "id": "src",
+      "epoch": 1
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i2",
+      "op": "event-ingest",
+      "id": "raw-1",
+      "source": "src",
+      "epoch": 1,
+      "seq": 1,
+      "service": "svc-a",
+      "uid": "svc-uid1",
+      "kind": "deploy",
+      "at": 10
+    }
+  },
+  {
+    "command": "incident",
+    "input": {
+      "event_id": "i3",
+      "op": "incident-correlate",
+      "id": "inc-1",
+      "event": "raw-1"
+    }
+  },
+  {
+    "command": "advisory",
+    "input": {
+      "event_id": "slo-pre",
+      "op": "advisory-publish",
+      "id": "pre",
+      "close": "close",
+      "limit": 4
+    }
+  },
+  {
+    "command": "slo",
+    "input": {
+      "event_id": "slo-obs",
+      "op": "slo-observe",
+      "id": "obs",
+      "incident": "inc-1",
+      "service": "svc-a",
+      "start": 4,
+      "end": 11
+    }
+  },
+  {
+    "command": "slo",
+    "input": {
+      "event_id": "slo-close",
+      "op": "slo-close",
+      "id": "close",
+      "service": "svc-a",
+      "start": 0,
+      "end": 10
+    }
+  },
+  {
+    "command": "advisory",
+    "input": {
+      "event_id": "slo-out",
+      "op": "advisory-publish",
+      "id": "out",
+      "close": "close",
+      "limit": 4
+    }
+  }
+]

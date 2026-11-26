@@ -15,3 +15,6 @@ MODULES.update(watch=watch, notice_cost=notice_cost)
 
 from . import airgap, witness
 MODULES.update(airgap=airgap,witness=witness)
+
+from . import slo, advisory
+MODULES.update(slo=slo, advisory=advisory)
